@@ -152,7 +152,7 @@ const Programs = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Center Locations</h3>
                 <p className="text-gray-600">
-                  Based at partner churches with safe infrastructure and community support
+                  Based at PEFA NYAGORO CHURCH with safe infrastructure and community support
                 </p>
               </CardContent>
             </Card>
@@ -164,7 +164,7 @@ const Programs = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Entry Criteria</h3>
                 <p className="text-gray-600">
-                  Social worker assessment in collaboration with churches and Compassion International
+                 Social worker assessment in collaboration with the ASM Comnittee and Compassion International guidlines of the PPI Tool.
                 </p>
               </CardContent>
             </Card>
