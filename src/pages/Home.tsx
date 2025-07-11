@@ -20,7 +20,7 @@ const Home = () => {
     },
     {
       icon: BookOpen,
-      title: 'Cognitive Development',
+      title: 'Self-Reliance and Education',
       description: 'Tuition sponsorship, tutoring, and skills development for educational excellence.',
       color: 'text-blue-500'
     },

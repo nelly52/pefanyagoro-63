@@ -1,4 +1,3 @@
-
 import { Heart, Activity, Brain, Users, Shield } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -43,7 +42,7 @@ const Programs = () => {
     },
     {
       icon: Brain,
-      title: 'Cognitive Development',
+      title: 'Self-Reliance and Education',
       color: 'bg-blue-50 text-blue-600',
       borderColor: 'border-blue-200',
       activities: [
