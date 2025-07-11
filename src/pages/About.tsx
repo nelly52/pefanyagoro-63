@@ -55,9 +55,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                To reflect Christ's love by nurturing orphans and vulnerable children through holistic 
-                development—spiritually, physically, emotionally, intellectually, and socially—empowering 
-                them to live fulfilled, God-centered lives.
+                To release children from spiritual, economic, social, and physical poverty through Christ-centered care and community empowerment.
               </p>
               <div className="bg-blue-50 p-6 rounded-lg">
                 <h3 className="font-semibold text-lg text-blue-900 mb-3">Our Target Group</h3>
