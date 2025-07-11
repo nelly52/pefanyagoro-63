@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Clock, Send, Heart } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Heart, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,6 +28,12 @@ const Contact = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSponsorClick = () => {
+    // Mobile money link for M-Pesa (Kenya)
+    const mobileMoneyLink = "https://mpesa.me/pefanyagoro";
+    window.open(mobileMoneyLink, '_blank');
   };
 
   return (
@@ -235,16 +241,30 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+            <Card 
+              className="text-center hover:shadow-lg transition-shadow duration-300 border-0 shadow-md cursor-pointer transform hover:scale-105 transition-transform"
+              onClick={handleSponsorClick}
+            >
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Heart className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Sponsor a Child</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                  Sponsor a Child
+                  <ExternalLink className="h-4 w-4" />
+                </h3>
                 <p className="text-gray-600 mb-4">
                   Make a direct impact in a child's life through our partnership with Compassion International.
                 </p>
-                <p className="text-sm text-gray-500">Learn about sponsorship opportunities</p>
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                  <p className="text-sm text-green-700 font-medium">
+                    💳 Click to send mobile money support
+                  </p>
+                  <p className="text-xs text-green-600 mt-1">
+                    Secure M-Pesa payment available
+                  </p>
+                </div>
+                <p className="text-sm text-gray-500">One-time or recurring sponsorship available</p>
               </CardContent>
             </Card>
 
