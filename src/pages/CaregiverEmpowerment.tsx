@@ -17,7 +17,8 @@ import {
   ShoppingBag,
   PiggyBank,
   GraduationCap,
-  Handshake
+  Handshake,
+  ExternalLink
 } from 'lucide-react';
 
 const CaregiverEmpowerment = () => {
@@ -62,7 +63,7 @@ const CaregiverEmpowerment = () => {
       topics: [
         {
           name: "Child Development",
-          details: "Understanding different stages of child development and age-appropriate expectations. Learn how to support your child's physical, emotional, and cognitive growth.",
+          details: "Understanding different stages of child development and age-appropriate expectations. Learn how to support your child's physical, emotional, and self-reliance growth.",
           benefits: ["Better parent-child relationship", "Improved child behavior", "Academic success"]
         },
         {
@@ -76,8 +77,8 @@ const CaregiverEmpowerment = () => {
           benefits: ["Open family communication", "Trust building", "Emotional intelligence"]
         },
         {
-          name: "Supporting Education",
-          details: "How to create a learning environment at home and support your child's educational journey. Learn about homework help and school collaboration.",
+          name: "Supporting Self-Reliance and Education",
+          details: "How to create a learning environment at home and support your child's educational journey while fostering independence. Learn about homework help and school collaboration.",
           benefits: ["Better academic performance", "Love for learning", "Future opportunities"]
         }
       ]
@@ -154,6 +155,18 @@ const CaregiverEmpowerment = () => {
       participants: "40 caregivers"
     }
   ];
+
+  const handleRegistration = () => {
+    window.open('https://forms.google.com/workshop-registration', '_blank');
+  };
+
+  const handleJoinProgram = () => {
+    window.open('https://forms.google.com/join-program', '_blank');
+  };
+
+  const handleDownloadResources = () => {
+    window.open('https://drive.google.com/caregiver-resources', '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
@@ -317,7 +330,11 @@ const CaregiverEmpowerment = () => {
                       {workshop.participants}
                     </p>
                   </div>
-                  <Button className="w-full mt-4 bg-white text-blue-600 hover:bg-gray-100">
+                  <Button 
+                    className="w-full mt-4 bg-white text-blue-600 hover:bg-gray-100"
+                    onClick={handleRegistration}
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
                     Register Now
                   </Button>
                 </CardContent>
@@ -337,11 +354,20 @@ const CaregiverEmpowerment = () => {
             Join our empowerment programs and build the skills you need for sustainable success
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
+            <Button 
+              size="lg" 
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+              onClick={handleJoinProgram}
+            >
               <Handshake className="h-5 w-5 mr-2" />
               Join a Program
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3"
+              onClick={handleDownloadResources}
+            >
               <BookOpen className="h-5 w-5 mr-2" />
               Download Resources
             </Button>

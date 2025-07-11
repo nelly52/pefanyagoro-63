@@ -15,7 +15,8 @@ import {
   Palette,
   Camera,
   Zap,
-  Crown
+  Crown,
+  ExternalLink
 } from 'lucide-react';
 
 const KidsCorner = () => {
@@ -88,6 +89,14 @@ const KidsCorner = () => {
     { name: "Creative Artists", count: 67, icon: Palette },
     { name: "Community Helpers", count: 89, icon: Heart }
   ];
+
+  const handleShareStory = () => {
+    window.open('https://forms.google.com/share-my-story', '_blank');
+  };
+
+  const handleUploadPhoto = () => {
+    window.open('https://forms.google.com/upload-photos', '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
@@ -235,12 +244,23 @@ const KidsCorner = () => {
             We want to hear from you!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3">
+            <Button 
+              size="lg" 
+              className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3"
+              onClick={handleShareStory}
+            >
               <BookOpen className="h-5 w-5 mr-2" />
+              <ExternalLink className="h-4 w-4 mr-1" />
               Share My Story
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3"
+              onClick={handleUploadPhoto}
+            >
               <Camera className="h-5 w-5 mr-2" />
+              <ExternalLink className="h-4 w-4 mr-1" />
               Upload Photos
             </Button>
           </div>

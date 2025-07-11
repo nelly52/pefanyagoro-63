@@ -1,5 +1,5 @@
 
-import { Handshake, Target, BookOpen, Users, Globe, Award } from 'lucide-react';
+import { Handshake, Target, BookOpen, Users, Globe, Award, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Partnership = () => {
@@ -35,6 +35,37 @@ const Partnership = () => {
     'Regular monitoring and evaluation frameworks'
   ];
 
+  const localPartners = [
+    {
+      name: 'County Government of Homabay',
+      description: 'Collaborating on child welfare policies and community development initiatives'
+    },
+    {
+      name: 'Homabay Children\'s Office',
+      description: 'Working together to ensure child protection and welfare standards'
+    },
+    {
+      name: 'Area Chief',
+      description: 'Local administration support for community engagement and program delivery'
+    },
+    {
+      name: 'Local Police',
+      description: 'Ensuring child safety and security within our community programs'
+    },
+    {
+      name: 'Homabay County Children Assembly',
+      description: 'Empowering children\'s voices and participation in community decisions'
+    },
+    {
+      name: 'Kenya Redcross-Homabay Branch',
+      description: 'Disaster preparedness and emergency response coordination'
+    },
+    {
+      name: 'Nyagoro Health Center',
+      description: 'Providing healthcare services and health education for our children'
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -46,6 +77,17 @@ const Partnership = () => {
             <p className="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto">
               Strengthening our impact through proven methodologies and global expertise in child development
             </p>
+            <div className="mt-8">
+              <a 
+                href="https://compassionkenya.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-yellow-400 text-blue-900 font-semibold rounded-lg hover:bg-yellow-300 transition-colors"
+              >
+                Visit Compassion International Kenya
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -154,8 +196,33 @@ const Partnership = () => {
         </div>
       </section>
 
-      {/* Local Implementation */}
+      {/* Local Partners */}
       <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Our Local Partners
+            </h2>
+            <p className="text-lg text-gray-600">
+              Working together with local organizations to strengthen our community impact
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {localPartners.map((partner, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+                <CardContent className="p-6">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">{partner.name}</h3>
+                  <p className="text-gray-600 text-sm">{partner.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Local Implementation */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
             Local Implementation
