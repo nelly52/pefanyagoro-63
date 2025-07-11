@@ -1,7 +1,6 @@
-
 import Hero from '@/components/Hero';
 import { Card, CardContent } from '@/components/ui/card';
-import { Heart, Users, BookOpen, Shield, Handshake } from 'lucide-react';
+import { Heart, Users, BookOpen, Shield, Handshake, Star, Target, Compass, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -30,6 +29,45 @@ const Home = () => {
       title: 'Child Protection',
       description: 'Strict safeguarding policies and safe spaces within church compounds.',
       color: 'text-purple-500'
+    }
+  ];
+
+  const coreValues = [
+    {
+      icon: Heart,
+      title: 'Christ-Centered Love',
+      description: 'Every action flows from God\'s love, reflecting Christ in all we do.',
+      color: 'text-red-500'
+    },
+    {
+      icon: Shield,
+      title: 'Child Protection',
+      description: 'Unwavering commitment to the safety, dignity, and rights of every child.',
+      color: 'text-blue-500'
+    },
+    {
+      icon: Star,
+      title: 'Excellence',
+      description: 'Pursuing the highest standards in all our programs and services.',
+      color: 'text-yellow-500'
+    },
+    {
+      icon: Target,
+      title: 'Integrity',
+      description: 'Maintaining transparency, honesty, and accountability in all relationships.',
+      color: 'text-green-500'
+    },
+    {
+      icon: Compass,
+      title: 'Stewardship',
+      description: 'Responsible management of resources entrusted to our care.',
+      color: 'text-purple-500'
+    },
+    {
+      icon: Globe,
+      title: 'Partnership',
+      description: 'Collaborative relationships that multiply impact and sustainability.',
+      color: 'text-indigo-500'
     }
   ];
 
@@ -77,9 +115,8 @@ const Home = () => {
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                To reflect Christ's love by nurturing orphans and vulnerable children through holistic 
-                development—spiritually, physically, emotionally, intellectually, and socially—empowering 
-                them to live fulfilled, God-centered lives.
+                To release children from spiritual, economic, social, and physical poverty 
+                through Christ-centered care and community empowerment.
               </p>
             </div>
             <div 
@@ -94,8 +131,32 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Core Pillars */}
+      {/* Core Values Section */}
       <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+            <p className="text-lg text-gray-600">
+              Guided by Compassion International Kenya's proven principles
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {coreValues.map((value, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+                <CardContent className="p-6 text-center">
+                  <value.icon className={`h-12 w-12 mx-auto mb-4 ${value.color}`} />
+                  <h3 className="font-semibold text-lg mb-3 text-gray-900">{value.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Pillars */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Core Program Pillars</h2>
@@ -127,7 +188,7 @@ const Home = () => {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Impact in Action</h2>
@@ -204,9 +265,9 @@ const Home = () => {
                 Get Involved Today
               </Button>
             </Link>
-            <Link to="/about">
+            <Link to="/kids-corner">
               <Button size="lg" variant="outline" className="border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3">
-                Learn More About Us
+                Visit Kids Corner
               </Button>
             </Link>
           </div>

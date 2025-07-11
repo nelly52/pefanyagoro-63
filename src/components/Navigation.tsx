@@ -13,6 +13,8 @@ const Navigation = () => {
     { name: 'About', path: '/about' },
     { name: 'Programs', path: '/programs' },
     { name: 'Partnership', path: '/partnership' },
+    { name: 'Kids Corner', path: '/kids-corner' },
+    { name: 'Caregiver Empowerment', path: '/caregiver-empowerment' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -38,7 +40,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden lg:flex space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -56,7 +58,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-blue-600 focus:outline-none"
@@ -68,7 +70,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
               {navItems.map((item) => (
                 <Link
