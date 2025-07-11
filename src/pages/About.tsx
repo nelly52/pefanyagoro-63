@@ -105,13 +105,13 @@ const About = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
-            Accountability Structure
+            Accountability Structure 
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Management Committee */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Management Committee</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">ASM Committee</h3>
               <div className="bg-blue-50 p-6 rounded-lg">
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
@@ -144,7 +144,7 @@ const About = () => {
 
             {/* Management Team */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Management Team</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Child Development Worker</h3>
               <div className="space-y-4">
                 {managementTeam.map((member, index) => (
                   <div key={index} className="border-l-4 border-blue-600 pl-4">
