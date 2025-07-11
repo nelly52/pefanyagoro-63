@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,132 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Kids Corner Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-30px);
+  }
+  70% {
+    transform: translateY(-15px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Hover effects for cards */
+.group:hover .group-hover\:animate-bounce {
+  animation: bounce 1s ease-in-out;
+}
+
+.group:hover .group-hover\:animate-spin {
+  animation: spin 0.5s ease-in-out;
+}
+
+.group:hover .group-hover\:animate-pulse {
+  animation: pulse 1s ease-in-out;
+}
+
+/* Scale animations */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1);
+}
+
+.group-hover\:scale-110 {
+  transition: transform 0.3s ease;
+}
+
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+/* Rotation animations */
+.group-hover\:rotate-12 {
+  transition: transform 0.3s ease;
+}
+
+.group:hover .group-hover\:rotate-12 {
+  transform: rotate(12deg);
+}
+
+/* Color transitions */
+.group-hover\:text-blue-600 {
+  transition: color 0.3s ease;
+}
+
+.group:hover .group-hover\:text-blue-600 {
+  color: rgb(37, 99, 235);
+}
+
+.group-hover\:text-purple-600 {
+  transition: color 0.3s ease;
+}
+
+.group:hover .group-hover\:text-purple-600 {
+  color: rgb(147, 51, 234);
+}
+
+.group-hover\:text-indigo-600 {
+  transition: color 0.3s ease;
+}
+
+.group:hover .group-hover\:text-indigo-600 {
+  color: rgb(79, 70, 229);
 }

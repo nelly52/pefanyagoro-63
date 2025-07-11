@@ -1,5 +1,5 @@
 
-import { Handshake, Target, BookOpen, Users, Globe, Award, ExternalLink } from 'lucide-react';
+import { Handshake, Target, BookOpen, Users, Globe, Award, ExternalLink, Building2, Shield, UserCheck, Phone, Heart, Plus } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Partnership = () => {
@@ -38,31 +38,52 @@ const Partnership = () => {
   const localPartners = [
     {
       name: 'County Government of Homabay',
-      description: 'Collaborating on child welfare policies and community development initiatives'
+      description: 'Collaborating on child welfare policies and community development initiatives',
+      icon: Building2,
+      color: 'bg-blue-500',
+      bgGradient: 'from-blue-50 to-blue-100'
     },
     {
       name: 'Homabay Children\'s Office',
-      description: 'Working together to ensure child protection and welfare standards'
+      description: 'Working together to ensure child protection and welfare standards',
+      icon: Shield,
+      color: 'bg-green-500',
+      bgGradient: 'from-green-50 to-green-100'
     },
     {
       name: 'Area Chief',
-      description: 'Local administration support for community engagement and program delivery'
+      description: 'Local administration support for community engagement and program delivery',
+      icon: UserCheck,
+      color: 'bg-purple-500',
+      bgGradient: 'from-purple-50 to-purple-100'
     },
     {
       name: 'Local Police',
-      description: 'Ensuring child safety and security within our community programs'
+      description: 'Ensuring child safety and security within our community programs',
+      icon: Shield,
+      color: 'bg-red-500',
+      bgGradient: 'from-red-50 to-red-100'
     },
     {
       name: 'Homabay County Children Assembly',
-      description: 'Empowering children\'s voices and participation in community decisions'
+      description: 'Empowering children\'s voices and participation in community decisions',
+      icon: Users,
+      color: 'bg-pink-500',
+      bgGradient: 'from-pink-50 to-pink-100'
     },
     {
       name: 'Kenya Redcross-Homabay Branch',
-      description: 'Disaster preparedness and emergency response coordination'
+      description: 'Disaster preparedness and emergency response coordination',
+      icon: Plus,
+      color: 'bg-red-600',
+      bgGradient: 'from-red-50 to-red-100'
     },
     {
       name: 'Nyagoro Health Center',
-      description: 'Providing healthcare services and health education for our children'
+      description: 'Providing healthcare services and health education for our children',
+      icon: Heart,
+      color: 'bg-teal-500',
+      bgGradient: 'from-teal-50 to-teal-100'
     }
   ];
 
@@ -196,27 +217,61 @@ const Partnership = () => {
         </div>
       </section>
 
-      {/* Local Partners */}
-      <section className="py-16 bg-white">
+      {/* Local Partners - Enhanced Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Our Local Partners
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              🤝 Our Local Partners
             </h2>
-            <p className="text-lg text-gray-600">
-              Working together with local organizations to strengthen our community impact
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Building stronger communities through strategic partnerships with local organizations and institutions
             </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {localPartners.map((partner, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-lg text-gray-900 mb-3">{partner.name}</h3>
-                  <p className="text-gray-600 text-sm">{partner.description}</p>
+              <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-lg hover:scale-105 overflow-hidden">
+                <div className={`h-2 bg-gradient-to-r ${partner.bgGradient}`} />
+                <CardContent className="p-6 relative">
+                  <div className={`absolute top-4 right-4 w-12 h-12 ${partner.color} rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300`}>
+                    <partner.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="pr-16">
+                    <h3 className="font-bold text-lg text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      {partner.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {partner.description}
+                    </p>
+                  </div>
+                  <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${partner.bgGradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          {/* Partnership Stats */}
+          <div className="mt-16 bg-white rounded-2xl shadow-xl p-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">7+</div>
+                <div className="text-gray-600">Local Partners</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
+                <div className="text-gray-600">Community Coverage</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">5+</div>
+                <div className="text-gray-600">Years Partnership</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-pink-600 mb-2">24/7</div>
+                <div className="text-gray-600">Support Network</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
