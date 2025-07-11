@@ -68,7 +68,7 @@ const About = () => {
             <div 
               className="h-64 lg:h-80 bg-gray-300 rounded-lg shadow-lg"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`,
+                backgroundImage: `url('/lovable-uploads/6dbc8ffa-44ea-4b48-b605-b3da6a694293.png')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
