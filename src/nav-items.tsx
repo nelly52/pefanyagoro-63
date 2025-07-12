@@ -1,5 +1,5 @@
 
-import { Home, Users, Heart, Phone, Baby, Handshake, GraduationCap } from "lucide-react";
+import { Home as HomeIcon, Users, Heart, Phone, Baby, Handshake, GraduationCap } from "lucide-react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Programs from "./pages/Programs";
@@ -12,7 +12,7 @@ export const navItems = [
   {
     title: "Home",
     to: "/",
-    icon: <Home className="h-4 w-4" />,
+    icon: <HomeIcon className="h-4 w-4" />,
     page: <Home />,
   },
   {
