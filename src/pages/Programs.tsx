@@ -1,122 +1,170 @@
-import { Heart, Activity, Brain, Users, Shield } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ProgramApplicationForm } from '@/components/forms/ProgramApplicationForm';
+import { PaymentButton } from '@/components/PaymentButton';
+import {
+  BookOpenCheck,
+  BrainCircuit,
+  Flame,
+  HeartHandshake,
+  Lightbulb,
+  Users2,
+} from 'lucide-react';
 
 const Programs = () => {
   const programs = [
     {
-      icon: Heart,
-      title: 'Spiritual Development',
-      color: 'bg-red-50 text-red-600',
-      borderColor: 'border-red-200',
+      title: "Child Sponsorship Program",
+      description: "Provide education, healthcare, and support to children in need, helping them break the cycle of poverty.",
+      icon: HeartHandshake,
+      color: "bg-blue-500",
+      ageGroup: "All Ages",
       activities: [
-        'Weekly Bible classes and discipleship programs',
-        'Child-focused spiritual mentorship with trained local church volunteers',
-        'Monthly kids\' worship sessions',
-        'Distribution of age-appropriate Bibles and devotionals',
-        'Annual spiritual retreats or vacation Bible school (VBS)'
-      ]
+        "Educational support",
+        "Nutritional assistance",
+        "Healthcare access",
+        "Mentorship programs",
+      ],
     },
     {
-      icon: Activity,
-      title: 'Physical Wellbeing',
-      color: 'bg-green-50 text-green-600',
-      borderColor: 'border-green-200',
+      title: "Self-Reliance and Education",
+      description: "Empower families through education and vocational training, fostering self-sufficiency and sustainable livelihoods.",
+      icon: BookOpenCheck,
+      color: "bg-green-500",
+      ageGroup: "Youth & Adults",
       activities: [
-        'Nutritional support (daily meals/snacks)',
-        'Access to basic healthcare services in partnership with local clinics',
-        'Health screenings and hygiene education',
-        'Clothing and school supplies distribution'
-      ]
+        "Vocational training",
+        "Business skills workshops",
+        "Microfinance initiatives",
+        "Adult literacy programs",
+      ],
     },
     {
-      icon: Users,
-      title: 'Socio-Emotional Support',
-      color: 'bg-purple-50 text-purple-600',
-      borderColor: 'border-purple-200',
+      title: "Health and Nutrition",
+      description: "Improve community health through education, disease prevention, and access to nutritious food and clean water.",
+      icon: Flame,
+      color: "bg-red-500",
+      ageGroup: "All Ages",
       activities: [
-        'One-on-one counseling (partnering with Christian counselors)',
-        'Trauma-informed care training for staff',
-        'Group sessions and peer support groups',
-        'Parent/guardian support and training for foster/extended families'
-      ]
+        "Health education workshops",
+        "Nutritional counseling",
+        "Clean water initiatives",
+        "Disease prevention campaigns",
+      ],
     },
     {
-      icon: Brain,
-      title: 'Self-Reliance and Education',
-      color: 'bg-blue-50 text-blue-600',
-      borderColor: 'border-blue-200',
+      title: "Leadership Development",
+      description: "Cultivate the next generation of leaders through mentorship, training, and opportunities for community engagement.",
+      icon: Lightbulb,
+      color: "bg-yellow-500",
+      ageGroup: "Youth",
       activities: [
-        'Tuition sponsorship and school enrollment follow-up',
-        'After-school tutoring and literacy programs',
-        'Skills development workshops (computer, languages, arts)',
-        'Early childhood development for children under 6'
-      ]
+        "Leadership training workshops",
+        "Mentorship programs",
+        "Community service projects",
+        "Public speaking training",
+      ],
     },
     {
-      icon: Shield,
-      title: 'Child Protection',
-      color: 'bg-orange-50 text-orange-600',
-      borderColor: 'border-orange-200',
+      title: "Caregiver Empowerment",
+      description: "Equip caregivers with the skills and resources they need to provide nurturing care and support for children.",
+      icon: Users2,
+      color: "bg-purple-500",
+      ageGroup: "Adults",
       activities: [
-        'Strict child safeguarding policies and reporting systems',
-        'Community awareness programs on child rights and protection',
-        'Collaboration with local child services and police when needed',
-        'Safe spaces within church compounds for play and rest'
-      ]
-    }
+        "Parenting skills workshops",
+        "Financial literacy training",
+        "Mental health support",
+        "Networking opportunities",
+      ],
+    },
+    {
+      title: "Innovation and Technology",
+      description: "Equipping youths with technology skills to solve community problems.",
+      icon: BrainCircuit,
+      color: "bg-orange-500",
+      ageGroup: "Youth",
+      activities: [
+        "Coding and App development",
+        "Robotics Training",
+        "AI and Machine Learning",
+        "Digital Skills Training",
+      ],
+    },
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Our Core Program Pillars</h1>
-            <p className="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto">
-              Comprehensive development programs addressing every aspect of a child's growth and well-being
-            </p>
+      <section className="py-24 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+            Our Programs
+          </h1>
+          <p className="text-xl text-green-100 max-w-3xl mx-auto">
+            Explore our diverse programs designed to empower individuals and
+            transform communities.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <Badge className="bg-green-400 text-green-900 text-lg px-4 py-2 hover:scale-110 transition-transform cursor-pointer">
+              Making a Difference
+            </Badge>
           </div>
         </div>
       </section>
 
-      {/* Programs Overview */}
+      {/* Programs Grid */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Holistic Child Development
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our five core pillars work together to provide comprehensive care that addresses 
-              the spiritual, physical, emotional, intellectual, and social needs of every child.
-            </p>
-          </div>
-
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {programs.map((program, index) => (
-              <Card key={index} className={`border-2 ${program.borderColor} hover:shadow-lg transition-shadow duration-300`}>
-                <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-8">
-                    <div className="flex items-center mb-6 lg:mb-0 lg:flex-col lg:items-center lg:space-y-4">
-                      <div className={`p-4 rounded-full ${program.color} mr-4 lg:mr-0`}>
-                        <program.icon className="h-8 w-8" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 lg:text-center">
-                        {program.title}
-                      </h3>
+              <Card key={index} className="hover:shadow-xl transition-shadow duration-300 border-0 shadow-lg">
+                <div className={`h-2 ${program.color}`}></div>
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <program.icon className="h-12 w-12 text-blue-600" />
+                    <Badge variant="outline" className="text-blue-600 border-blue-200">
+                      {program.ageGroup}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-2xl text-gray-900 mb-2">{program.title}</CardTitle>
+                  <p className="text-gray-600">{program.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-900 mb-3">Key Activities:</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {program.activities.map((activity, activityIndex) => (
+                        <div key={activityIndex} className="flex items-center text-sm text-gray-600">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full mr-2 flex-shrink-0"></div>
+                          {activity}
+                        </div>
+                      ))}
                     </div>
-                    
-                    <div className="flex-1">
-                      <ul className="space-y-3">
-                        {program.activities.map((activity, activityIndex) => (
-                          <li key={activityIndex} className="flex items-start">
-                            <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            <span className="text-gray-700">{activity}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                          Apply for Program
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle>Apply for {program.title}</DialogTitle>
+                        </DialogHeader>
+                        <ProgramApplicationForm />
+                      </DialogContent>
+                    </Dialog>
+                    <PaymentButton 
+                      amount={75}
+                      description={`Support ${program.title} program`}
+                      variant="outline"
+                      className="w-full"
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -125,90 +173,53 @@ const Programs = () => {
         </div>
       </section>
 
-      {/* Operational Model */}
+      {/* Impact Section */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
-            Our Operational Model
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            Our Impact
           </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Target Group</h3>
-                <p className="text-gray-600">
-                  Orphans, abandoned children, and highly vulnerable children (HVCs) ages 0–22
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="h-8 w-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Center Locations</h3>
-                <p className="text-gray-600">
-                  Based at PEFA NYAGORO CHURCH with safe infrastructure and community support
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Shield className="h-8 w-8 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Entry Criteria</h3>
-                <p className="text-gray-600">
-                 Social worker assessment in collaboration with the ASM Comnittee and Compassion International guidlines of the PPI Tool.
-                </p>
-              </CardContent>
-            </Card>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            We are committed to creating lasting change in the lives of
+            individuals and communities through our programs.
+          </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
+              <p className="text-gray-600">Children Sponsored</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-green-600 mb-2">100+</div>
+              <p className="text-gray-600">Families Empowered</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-purple-600 mb-2">50+</div>
+              <p className="text-gray-600">Community Projects</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Monitoring & Evaluation */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">
-            Monitoring & Evaluation
+      {/* Call to Action */}
+      <section className="py-16 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+            Make a Difference Today
           </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Brain className="h-8 w-8 text-gray-900" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Monthly Reviews</h3>
-              <p className="text-blue-100">
-                Regular child welfare reviews to ensure each child's needs are being met effectively
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Activity className="h-8 w-8 text-gray-900" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Bi-annual Assessments</h3>
-              <p className="text-blue-100">
-                Comprehensive holistic development assessments covering all five pillars
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart className="h-8 w-8 text-gray-900" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Digital Tracking</h3>
-              <p className="text-blue-100">
-                Use of Compassion's digital case tracking tools for accurate progress monitoring
-              </p>
-            </div>
+          <p className="text-xl text-green-100 mb-8">
+            Your support helps us provide life-changing programs to children and families in our community
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <PaymentButton 
+              amount={100}
+              description="Monthly program support"
+              className="bg-white text-green-600 hover:bg-gray-100"
+            />
+            <PaymentButton 
+              amount={250}
+              description="Sponsor a child for 3 months"
+              className="bg-white text-green-600 hover:bg-gray-100"
+            />
           </div>
         </div>
       </section>

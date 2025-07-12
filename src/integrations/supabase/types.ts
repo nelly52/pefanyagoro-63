@@ -14,7 +14,156 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          subject: string
+          submitted_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          subject: string
+          submitted_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          subject?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
+      kids_stories: {
+        Row: {
+          age: number | null
+          child_name: string
+          id: string
+          parent_email: string | null
+          story: string
+          submitted_at: string
+        }
+        Insert: {
+          age?: number | null
+          child_name: string
+          id?: string
+          parent_email?: string | null
+          story: string
+          submitted_at?: string
+        }
+        Update: {
+          age?: number | null
+          child_name?: string
+          id?: string
+          parent_email?: string | null
+          story?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
+      photo_uploads: {
+        Row: {
+          child_name: string
+          description: string | null
+          id: string
+          parent_email: string | null
+          photo_url: string
+          submitted_at: string
+        }
+        Insert: {
+          child_name: string
+          description?: string | null
+          id?: string
+          parent_email?: string | null
+          photo_url: string
+          submitted_at?: string
+        }
+        Update: {
+          child_name?: string
+          description?: string | null
+          id?: string
+          parent_email?: string | null
+          photo_url?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
+      program_applications: {
+        Row: {
+          age: string | null
+          email: string
+          experience: string | null
+          id: string
+          motivation: string | null
+          name: string
+          phone: string | null
+          program_type: string
+          submitted_at: string
+        }
+        Insert: {
+          age?: string | null
+          email: string
+          experience?: string | null
+          id?: string
+          motivation?: string | null
+          name: string
+          phone?: string | null
+          program_type: string
+          submitted_at?: string
+        }
+        Update: {
+          age?: string | null
+          email?: string
+          experience?: string | null
+          id?: string
+          motivation?: string | null
+          name?: string
+          phone?: string | null
+          program_type?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
+      workshop_registrations: {
+        Row: {
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          preferred_date: string | null
+          submitted_at: string
+          workshop_type: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          preferred_date?: string | null
+          submitted_at?: string
+          workshop_type: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          preferred_date?: string | null
+          submitted_at?: string
+          workshop_type?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

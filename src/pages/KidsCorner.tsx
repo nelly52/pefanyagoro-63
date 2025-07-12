@@ -1,8 +1,10 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { KidsStoryForm } from '@/components/forms/KidsStoryForm';
+import { PhotoUploadForm } from '@/components/forms/PhotoUploadForm';
 import { 
   GamepadIcon, 
   PenTool, 
@@ -182,11 +184,11 @@ const KidsCorner = () => {
   ];
 
   const handleShareStory = () => {
-    window.open('https://forms.google.com/share-my-story', '_blank');
+    // This will now open the dialog instead of external link
   };
 
   const handleUploadPhoto = () => {
-    window.open('https://forms.google.com/upload-photos', '_blank');
+    // This will now open the dialog instead of external link
   };
 
   return (
@@ -419,7 +421,7 @@ const KidsCorner = () => {
         </div>
       </section>
 
-      {/* Share Your Story - Enhanced with Animation */}
+      {/* Share Your Story - Enhanced with Functional Forms */}
       <section className="py-16 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0">
@@ -446,25 +448,46 @@ const KidsCorner = () => {
             We want to hear from you and celebrate your success!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button 
-              size="lg" 
-              className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 hover:scale-105 transition-all duration-300 shadow-lg"
-              onClick={handleShareStory}
-            >
-              <BookOpen className="h-5 w-5 mr-2" />
-              <ExternalLink className="h-4 w-4 mr-1" />
-              Share My Story
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 hover:scale-105 transition-all duration-300 shadow-lg"
-              onClick={handleUploadPhoto}
-            >
-              <Camera className="h-5 w-5 mr-2" />
-              <ExternalLink className="h-4 w-4 mr-1" />
-              Upload Photos
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  size="lg" 
+                  className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 hover:scale-105 transition-all duration-300 shadow-lg"
+                >
+                  <BookOpen className="h-5 w-5 mr-2" />
+                  Share My Story
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-center">
+                    🌟 Share Your Amazing Story! 🌟
+                  </DialogTitle>
+                </DialogHeader>
+                <KidsStoryForm />
+              </DialogContent>
+            </Dialog>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 hover:scale-105 transition-all duration-300 shadow-lg"
+                >
+                  <Camera className="h-5 w-5 mr-2" />
+                  Upload Photos
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-center">
+                    📸 Upload Your Photos! 📸
+                  </DialogTitle>
+                </DialogHeader>
+                <PhotoUploadForm />
+              </DialogContent>
+            </Dialog>
           </div>
           
           {/* Achievement celebration */}
