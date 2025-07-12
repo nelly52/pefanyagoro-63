@@ -8,13 +8,15 @@ interface FormSubmissionOptions {
   onError?: (error: string) => void;
 }
 
+type TableName = 'contact_submissions' | 'workshop_registrations' | 'program_applications' | 'kids_stories' | 'photo_uploads';
+
 export const useFormSubmission = (options?: FormSubmissionOptions) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submitForm = async (table: string, data: Record<string, any>) => {
+  const submitForm = async (table: TableName, data: Record<string, any>) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from(table).insert([data]);
+      const { error } = await supabase.from(table).insert(data);
       
       if (error) {
         console.error('Form submission error:', error);
