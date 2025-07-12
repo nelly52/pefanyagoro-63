@@ -16,7 +16,7 @@ export const useFormSubmission = (options?: FormSubmissionOptions) => {
   const submitForm = async (table: TableName, data: Record<string, any>) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from(table).insert(data);
+      const { error } = await supabase.from(table).insert(data as any);
       
       if (error) {
         console.error('Form submission error:', error);
