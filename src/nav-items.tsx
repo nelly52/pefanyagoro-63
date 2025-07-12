@@ -1,18 +1,19 @@
 
-import { Home, Users, Heart, Phone, Baby, Handshake } from "lucide-react";
-import Index from "./pages/Index";
+import { Home, Users, Heart, Phone, Baby, Handshake, GraduationCap } from "lucide-react";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Programs from "./pages/Programs";
 import Contact from "./pages/Contact";
 import KidsCorner from "./pages/KidsCorner";
 import Partnership from "./pages/Partnership";
+import CaregiverEmpowerment from "./pages/CaregiverEmpowerment";
 
 export const navItems = [
   {
     title: "Home",
     to: "/",
     icon: <Home className="h-4 w-4" />,
-    page: <Index />,
+    page: <Home />,
   },
   {
     title: "About",
@@ -28,9 +29,15 @@ export const navItems = [
   },
   {
     title: "Kids Corner",
-    to: "/kids",
+    to: "/kids-corner",
     icon: <Baby className="h-4 w-4" />,
     page: <KidsCorner />,
+  },
+  {
+    title: "Caregiver Empowerment",
+    to: "/caregiver-empowerment",
+    icon: <GraduationCap className="h-4 w-4" />,
+    page: <CaregiverEmpowerment />,
   },
   {
     title: "Partnership",
