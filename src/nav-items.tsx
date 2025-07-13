@@ -1,9 +1,9 @@
 
-import { Home as HomeIcon, Users, Heart, Phone, Baby, Handshake, GraduationCap, DollarSign } from "lucide-react";
+import { Home as HomeIcon, Users, Heart, Phone, Baby, Handshake, GraduationCap, DollarSign, UserPlus } from "lucide-react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Programs from "./pages/Programs";
-import Contact from "./pages/Contact";
+import GetInvolved from "./pages/GetInvolved";
 import KidsCorner from "./pages/KidsCorner";
 import Partnership from "./pages/Partnership";
 import CaregiverEmpowerment from "./pages/CaregiverEmpowerment";
@@ -49,15 +49,15 @@ export const navItems = [
     page: <Partnership />,
   },
   {
+    title: "Get Involved",
+    to: "/get-involved",
+    icon: <UserPlus className="h-4 w-4" />,
+    page: <GetInvolved />,
+  },
+  {
     title: "Donate Now",
     to: "/donate-now",
     icon: <DollarSign className="h-4 w-4" />,
     page: <DonateNow />,
-  },
-  {
-    title: "Contact",
-    to: "/contact",
-    icon: <Phone className="h-4 w-4" />,
-    page: <Contact />,
   },
 ];

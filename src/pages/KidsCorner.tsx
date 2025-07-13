@@ -1,419 +1,215 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { KidsStoryForm } from '@/components/forms/KidsStoryForm';
-import { PhotoUploadForm } from '@/components/forms/PhotoUploadForm';
-import { 
-  GamepadIcon, 
-  PenTool, 
-  Trophy, 
-  Star, 
-  Heart, 
-  Smile,
+import { Button } from '@/components/ui/button';
+import {
+  Baby,
   BookOpen,
+  Gamepad2,
+  Heart,
   Music,
   Palette,
+  Star,
+  Users,
+  Trophy,
+  Gift,
   Camera,
-  Zap,
-  Crown,
-  ExternalLink,
-  Code,
-  Play,
-  Rocket,
-  Brain,
-  Target,
-  Award,
-  Sparkles
+  Mic,
+  Calendar,
+  MapPin,
+  Clock
 } from 'lucide-react';
+import { KidsStoryForm } from '@/components/forms/KidsStoryForm';
+import { PhotoUploadForm } from '@/components/forms/PhotoUploadForm';
 
 const KidsCorner = () => {
-  const [selectedStory, setSelectedStory] = useState<number | null>(null);
-
-  const childrenStories = [
+  const activities = [
     {
-      id: 1,
-      name: "Grace Wanjiku",
-      age: 12,
-      title: "My Dream to Become a Doctor",
-      story: "Thanks to the support from PEFA NYAGORO CDC, I'm excelling in my studies. I dream of becoming a doctor to help my community. I've been top of my class for 3 terms!",
-      achievement: "Academic Excellence Award",
-      image: "/lovable-uploads/a1d9e1c1-7658-45f8-96d2-31964561e94e.png"
+      title: 'Story Time Adventures',
+      description: 'Interactive storytelling sessions that spark imagination and improve language skills',
+      icon: BookOpen,
+      color: 'bg-purple-500',
+      ageGroup: '3-8 years',
+      schedule: 'Tuesdays & Thursdays, 3:00 PM',
+      highlights: [
+        'Traditional Kenyan folktales',
+        'Interactive story participation',
+        'Character costume dress-up',
+        'Story illustration activities'
+      ]
     },
     {
-      id: 2,
-      name: "Daniel Kiprotich",
-      age: 14,
-      title: "Football Captain and Scholar",
-      story: "I love playing football and studying mathematics. The CDC helped me join the school team and I'm now the captain! I also help younger kids with their homework.",
-      achievement: "School Football Captain",
-      image: "/lovable-uploads/8a1a2af1-21aa-46fe-9536-f84f67e5d5ac.png"
-    },
-    {
-      id: 3,
-      name: "Mercy Akinyi",
-      age: 13,
-      title: "Young Environmental Champion",
-      story: "I started a tree planting club at school after learning about environmental conservation at the CDC. We've planted over 200 trees this year!",
-      achievement: "Environmental Leadership",
-      image: "/lovable-uploads/b3d4952c-2989-42b8-986c-a2d3cdc617c0.png"
-    }
-  ];
-
-  const funActivities = [
-    {
-      title: "🎮 Play Chess Online",
-      description: "Challenge your friends and improve your strategic thinking!",
-      link: "https://www.chess.com/play/online",
-      color: "bg-blue-500",
-      icon: GamepadIcon,
-      level: "All Levels",
-      category: "Strategy"
-    },
-    {
-      title: "📝 Word Scrabble",
-      description: "Build your vocabulary with fun word games!",
-      link: "https://wordscapes.com/",
-      color: "bg-green-500",
-      icon: PenTool,
-      level: "Beginner",
-      category: "Language"
-    },
-    {
-      title: "🎨 Digital Art Studio",
-      description: "Create amazing digital artwork and express yourself!",
-      link: "https://www.tuxpaint.org/",
-      color: "bg-purple-500",
+      title: 'Creative Arts & Crafts',
+      description: 'Hands-on creative activities using local materials to develop fine motor skills',
       icon: Palette,
-      level: "Creative",
-      category: "Art"
+      color: 'bg-pink-500',
+      ageGroup: '4-12 years',
+      schedule: 'Mondays & Wednesdays, 2:30 PM',
+      highlights: [
+        'Traditional beadwork and crafts',
+        'Painting with natural materials',
+        'Clay modeling and pottery',
+        'Recycled material art projects'
+      ]
     },
     {
-      title: "🎵 Music Maker",
-      description: "Compose your own music and share your creativity!",
-      link: "https://musiclab.chromeexperiments.com/",
-      color: "bg-pink-500",
+      title: 'Music & Movement',
+      description: 'Traditional songs, dances, and musical instrument exploration',
       icon: Music,
-      level: "All Levels",
-      category: "Music"
-    }
-  ];
-
-  const videoGames = [
-    {
-      title: "🚀 Scratch Programming",
-      description: "Learn to code by creating your own games and animations!",
-      link: "https://scratch.mit.edu/",
-      color: "bg-orange-500",
-      icon: Code,
-      level: "Beginner",
-      category: "Coding",
-      ageGroup: "8-16 years"
+      color: 'bg-green-500',
+      ageGroup: '2-10 years',
+      schedule: 'Fridays, 4:00 PM',
+      highlights: [
+        'Traditional Luo songs and dances',
+        'Homemade instrument creation',
+        'Rhythm and movement games',
+        'Cultural dance performances'
+      ]
     },
     {
-      title: "🎯 CodeCombat",
-      description: "Learn Python and JavaScript while playing an adventure game!",
-      link: "https://codecombat.com/",
-      color: "bg-red-500",
-      icon: Target,
-      level: "Intermediate",
-      category: "Coding",
-      ageGroup: "10+ years"
+      title: 'Educational Games',
+      description: 'Fun learning games that teach numbers, letters, and problem-solving',
+      icon: Gamepad2,
+      color: 'bg-blue-500',
+      ageGroup: '5-12 years',
+      schedule: 'Saturdays, 10:00 AM',
+      highlights: [
+        'Math games with local context',
+        'Kiswahili and English word games',
+        'Science exploration activities',
+        'Team building challenges'
+      ]
     },
     {
-      title: "🧠 Lightbot",
-      description: "Solve puzzles using programming logic and sequences!",
-      link: "https://lightbot.com/",
-      color: "bg-yellow-500",
-      icon: Brain,
-      level: "Beginner",
-      category: "Logic",
-      ageGroup: "6+ years"
+      title: 'Sports & Outdoor Play',
+      description: 'Physical activities and team sports to promote health and teamwork',
+      icon: Trophy,
+      color: 'bg-orange-500',
+      ageGroup: '6-15 years',
+      schedule: 'Daily, 5:00 PM',
+      highlights: [
+        'Football and netball teams',
+        'Traditional games like "Kati"',
+        'Athletic training and competitions',
+        'Outdoor adventure activities'
+      ]
     },
     {
-      title: "🌟 Khan Academy Kids",
-      description: "Educational games covering math, reading, and more!",
-      link: "https://www.khanacademy.org/kids",
-      color: "bg-teal-500",
-      icon: Star,
-      level: "All Levels",
-      category: "Education",
-      ageGroup: "3-12 years"
-    }
-  ];
-
-  const codingVideos = [
-    {
-      title: "🎬 Code.org Hour of Code",
-      description: "One-hour tutorials to learn computer science basics!",
-      link: "https://hourofcode.com/",
-      color: "bg-indigo-500",
-      icon: Play,
-      level: "Beginner",
-      duration: "1 hour",
-      category: "Tutorial"
-    },
-    {
-      title: "🚀 NASA Kids Programming",
-      description: "Learn coding while exploring space missions!",
-      link: "https://www.nasa.gov/audience/forkids/kidsclub/flash/",
-      color: "bg-purple-600",
-      icon: Rocket,
-      level: "Intermediate",
-      duration: "30 mins",
-      category: "STEM"
-    },
-    {
-      title: "🎮 MIT App Inventor",
-      description: "Create your own mobile apps with visual programming!",
-      link: "https://appinventor.mit.edu/",
-      color: "bg-cyan-500",
-      icon: Sparkles,
-      level: "Advanced",
-      duration: "2+ hours",
-      category: "App Development"
+      title: 'Special Events',
+      description: 'Monthly celebrations and community events for children and families',
+      icon: Gift,
+      color: 'bg-red-500',
+      ageGroup: 'All ages',
+      schedule: 'Monthly events',
+      highlights: [
+        'Birthday celebrations for all kids',
+        'Cultural festivals and holidays',
+        'Achievement award ceremonies',
+        'Family fun days and picnics'
+      ]
     }
   ];
 
   const achievements = [
-    { name: "Academic Star", count: 45, icon: Star },
-    { name: "Sports Champions", count: 23, icon: Trophy },
-    { name: "Creative Artists", count: 67, icon: Palette },
-    { name: "Community Helpers", count: 89, icon: Heart }
+    {
+      metric: '150+',
+      label: 'Children Enrolled',
+      description: 'Active participants in our programs'
+    },
+    {
+      metric: '95%',
+      label: 'School Attendance',
+      description: 'Improvement in regular school attendance'
+    },
+    {
+      metric: '25',
+      label: 'Weekly Activities',
+      description: 'Structured activities every week'
+    },
+    {
+      metric: '8',
+      label: 'Volunteer Teachers',
+      description: 'Dedicated community volunteers'
+    }
   ];
 
-  const handleShareStory = () => {
-    // This will now open the dialog instead of external link
-  };
-
-  const handleUploadPhoto = () => {
-    // This will now open the dialog instead of external link
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      {/* Hero Section with Animation */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black opacity-20"></div>
-          {/* Animated floating elements */}
-          <div className="absolute top-10 left-10 animate-bounce">
-            <Star className="h-6 w-6 text-yellow-300" />
-          </div>
-          <div className="absolute top-20 right-20 animate-pulse">
-            <Heart className="h-8 w-8 text-pink-300" />
-          </div>
-          <div className="absolute bottom-20 left-20 animate-bounce" style={{ animationDelay: '1s' }}>
-            <Smile className="h-7 w-7 text-green-300" />
-          </div>
-          <div className="absolute bottom-10 right-30 animate-pulse" style={{ animationDelay: '0.5s' }}>
-            <Rocket className="h-6 w-6 text-orange-300" />
-          </div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="flex space-x-2 animate-pulse">
-              <Star className="h-8 w-8 text-yellow-300 animate-spin" style={{ animationDuration: '3s' }} />
-              <Crown className="h-10 w-10 text-yellow-400 animate-bounce" />
-              <Star className="h-8 w-8 text-yellow-300 animate-spin" style={{ animationDuration: '3s', animationDirection: 'reverse' }} />
-            </div>
-          </div>
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 animate-fade-in">
-            🌟 Kids Corner 🌟
-          </h1>
-          <p className="text-xl lg:text-2xl mb-8 text-blue-100 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Your space to shine, learn, play, and share your amazing stories!
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <Badge className="bg-yellow-400 text-blue-900 text-lg px-4 py-2 hover:scale-110 transition-transform cursor-pointer">Super Stars</Badge>
-            <Badge className="bg-green-400 text-blue-900 text-lg px-4 py-2 hover:scale-110 transition-transform cursor-pointer">Future Leaders</Badge>
-            <Badge className="bg-pink-400 text-blue-900 text-lg px-4 py-2 hover:scale-110 transition-transform cursor-pointer">Creative Minds</Badge>
-          </div>
-        </div>
-      </section>
-
-      {/* Achievement Stats with Animation */}
-      <section className="py-12 bg-white">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {achievements.map((achievement, index) => (
-              <Card key={index} className="text-center border-2 border-dashed border-gray-300 hover:border-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
-                <CardContent className="p-6">
-                  <achievement.icon className="h-12 w-12 mx-auto mb-3 text-blue-600 group-hover:animate-bounce" />
-                  <div className="text-3xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform">{achievement.count}</div>
-                  <div className="text-sm font-medium text-gray-600">{achievement.name}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Children Stories with Enhanced Animation */}
-      <section className="py-16 bg-gradient-to-r from-green-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
-              🌟 Amazing Stories from Our Stars 🌟
-            </h2>
-            <p className="text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Read inspiring stories and achievements from our incredible kids!
+          <div className="text-center">
+            <Baby className="h-16 w-16 mx-auto mb-6 text-white animate-bounce" />
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+              Kids Corner: Where Dreams Take Flight
+            </h1>
+            <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
+              A magical space where children learn, play, and grow through engaging activities 
+              designed to nurture their creativity, education, and social development.
             </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {childrenStories.map((child, index) => (
-              <Card key={child.id} className="overflow-hidden hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:scale-105 group animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
-                  <img 
-                    src={child.image} 
-                    alt={child.name}
-                    className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-yellow-400 text-blue-900 animate-pulse">Age {child.age}</Badge>
-                  </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {achievements.map((achievement, index) => (
+                <div key={index} className="text-center bg-white/10 rounded-lg px-6 py-4 backdrop-blur-sm">
+                  <div className="text-2xl font-bold text-white">{achievement.metric}</div>
+                  <div className="text-purple-100 font-medium">{achievement.label}</div>
+                  <div className="text-sm text-purple-200">{achievement.description}</div>
                 </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-3">
-                    <Crown className="h-5 w-5 text-yellow-500 mr-2 group-hover:animate-spin" />
-                    <h3 className="font-bold text-lg text-gray-900">{child.name}</h3>
-                  </div>
-                  <h4 className="font-semibold text-blue-600 mb-3">{child.title}</h4>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{child.story}</p>
-                  <div className="flex items-center justify-between">
-                    <Badge variant="outline" className="border-green-500 text-green-700 hover:bg-green-50 transition-colors">
-                      🏆 {child.achievement}
-                    </Badge>
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="hover:scale-105 transition-transform"
-                      onClick={() => setSelectedStory(selectedStory === child.id ? null : child.id)}
-                    >
-                      {selectedStory === child.id ? 'Show Less' : 'Read More'}
-                    </Button>
-                  </div>
-                  {selectedStory === child.id && (
-                    <div className="mt-4 p-4 bg-blue-50 rounded-lg animate-fade-in">
-                      <p className="text-gray-700">{child.story}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Video Games Section - NEW */}
-      <section className="py-16 bg-gradient-to-br from-purple-100 to-pink-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
-              🎮 Awesome Games & Learning 🎮
-            </h2>
-            <p className="text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Play educational games and learn programming while having fun!
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4 rounded-full"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {videoGames.map((game, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105 cursor-pointer group animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-6 text-center">
-                  <div className={`w-16 h-16 ${game.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-300`}>
-                    <game.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2 text-gray-900 group-hover:text-purple-600 transition-colors">{game.title}</h3>
-                  <p className="text-gray-600 mb-3 text-sm">{game.description}</p>
-                  <div className="flex flex-wrap gap-1 mb-4 justify-center">
-                    <Badge variant="outline" className="text-xs">{game.level}</Badge>
-                    <Badge variant="outline" className="text-xs">{game.category}</Badge>
-                    <Badge variant="outline" className="text-xs text-purple-600">{game.ageGroup}</Badge>
-                  </div>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all"
-                    onClick={() => window.open(game.link, '_blank')}
-                  >
-                    <Zap className="h-4 w-4 mr-2" />
-                    Play Now!
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Coding Videos Subsection */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
-              🎬 Learn to Code with Videos 🎬
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {codingVideos.map((video, index) => (
-                <Card key={index} className="hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-indigo-300 group">
-                  <CardContent className="p-6">
-                    <div className={`w-12 h-12 ${video.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                      <video.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <h4 className="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">{video.title}</h4>
-                    <p className="text-gray-600 text-sm mb-3">{video.description}</p>
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      <Badge variant="secondary" className="text-xs">{video.level}</Badge>
-                      <Badge variant="secondary" className="text-xs">{video.duration}</Badge>
-                      <Badge variant="secondary" className="text-xs">{video.category}</Badge>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="w-full hover:bg-indigo-50 border-indigo-200 hover:border-indigo-300"
-                      onClick={() => window.open(video.link, '_blank')}
-                    >
-                      <Play className="h-4 w-4 mr-2" />
-                      Watch & Learn
-                    </Button>
-                  </CardContent>
-                </Card>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Fun Activities - Enhanced */}
-      <section className="py-16 bg-white">
+      {/* Activities Section */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
-              🎯 Classic Fun Activities 🎯
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Fun Activities for Every Child
             </h2>
-            <p className="text-lg text-gray-600 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Traditional games and activities to boost your creativity!
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our diverse range of activities ensures every child finds something they love 
+              while learning valuable skills and making lasting friendships.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {funActivities.map((activity, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105 cursor-pointer group animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-6 text-center">
-                  <div className={`w-16 h-16 ${activity.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bounce transition-all duration-300`}>
-                    <activity.icon className="h-8 w-8 text-white group-hover:scale-110 transition-transform" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {activities.map((activity, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105">
+                <div className={`h-3 ${activity.color} group-hover:h-4 transition-all duration-300`}></div>
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <activity.icon className="h-12 w-12 text-purple-600 group-hover:animate-bounce transition-all duration-300" />
+                    <Badge variant="outline" className="text-purple-600 border-purple-200 group-hover:bg-purple-100">
+                      {activity.ageGroup}
+                    </Badge>
                   </div>
-                  <h3 className="font-bold text-lg mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">{activity.title}</h3>
-                  <p className="text-gray-600 mb-4 text-sm">{activity.description}</p>
-                  <div className="flex justify-center gap-2 mb-4">
-                    <Badge variant="outline" className="text-xs">{activity.level}</Badge>
-                    <Badge variant="outline" className="text-xs">{activity.category}</Badge>
+                  <CardTitle className="text-xl text-gray-900 group-hover:text-purple-600 transition-colors">
+                    {activity.title}
+                  </CardTitle>
+                  <p className="text-gray-600">{activity.description}</p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Clock className="h-4 w-4 mr-2 text-blue-600" />
+                    <span>{activity.schedule}</span>
                   </div>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all"
-                    onClick={() => window.open(activity.link, '_blank')}
-                  >
-                    <Zap className="h-4 w-4 mr-2" />
-                    Let's Play!
-                  </Button>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
+                      <Star className="h-4 w-4 mr-2 text-yellow-500" />
+                      Activity Highlights:
+                    </h4>
+                    <div className="space-y-1">
+                      {activity.highlights.map((highlight, highlightIndex) => (
+                        <div key={highlightIndex} className="flex items-start text-sm text-gray-600">
+                          <div className="w-1.5 h-1.5 bg-purple-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -421,81 +217,87 @@ const KidsCorner = () => {
         </div>
       </section>
 
-      {/* Share Your Story - Enhanced with Functional Forms */}
-      <section className="py-16 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 animate-bounce" style={{ animationDelay: '0s' }}>
-            <Star className="h-4 w-4 text-white opacity-50" />
+      {/* Interactive Forms Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Share Your Child's Journey
+            </h2>
+            <p className="text-lg text-gray-600">
+              We love hearing about your child's experiences and seeing their creative works!
+            </p>
           </div>
-          <div className="absolute top-20 right-20 animate-bounce" style={{ animationDelay: '1s' }}>
-            <Heart className="h-6 w-6 text-white opacity-50" />
-          </div>
-          <div className="absolute bottom-20 left-30 animate-bounce" style={{ animationDelay: '2s' }}>
-            <Sparkles className="h-5 w-5 text-white opacity-50" />
-          </div>
-          <div className="absolute bottom-10 right-10 animate-bounce" style={{ animationDelay: '0.5s' }}>
-            <Trophy className="h-7 w-7 text-white opacity-50" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Story Submission */}
+            <Card className="shadow-lg">
+              <CardHeader className="text-center">
+                <Mic className="h-12 w-12 mx-auto mb-4 text-purple-600" />
+                <CardTitle className="text-2xl text-gray-900">
+                  Share Your Child's Story
+                </CardTitle>
+                <p className="text-gray-600">
+                  Tell us about your child's favorite activities, achievements, or special moments from Kids Corner
+                </p>
+              </CardHeader>
+              <CardContent>
+                <KidsStoryForm />
+              </CardContent>
+            </Card>
+
+            {/* Photo Upload */}
+            <Card className="shadow-lg">
+              <CardHeader className="text-center">
+                <Camera className="h-12 w-12 mx-auto mb-4 text-pink-600" />
+                <CardTitle className="text-2xl text-gray-900">
+                  Share Photos
+                </CardTitle>
+                <p className="text-gray-600">
+                  Upload photos of your child's artwork, activities, or special moments to celebrate their creativity
+                </p>
+              </CardHeader>
+              <CardContent>
+                <PhotoUploadForm />
+              </CardContent>
+            </Card>
           </div>
         </div>
-        
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 animate-fade-in">
-            ✨ Share Your Amazing Story! ✨
-          </h2>
-          <p className="text-xl text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Have you achieved something awesome? Won a competition? Helped someone? 
-            We want to hear from you and celebrate your success!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button 
-                  size="lg" 
-                  className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 hover:scale-105 transition-all duration-300 shadow-lg"
-                >
-                  <BookOpen className="h-5 w-5 mr-2" />
-                  Share My Story
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-2xl">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">
-                    🌟 Share Your Amazing Story! 🌟
-                  </DialogTitle>
-                </DialogHeader>
-                <KidsStoryForm />
-              </DialogContent>
-            </Dialog>
+      </section>
 
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 hover:scale-105 transition-all duration-300 shadow-lg"
-                >
-                  <Camera className="h-5 w-5 mr-2" />
-                  Upload Photos
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-2xl">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">
-                    📸 Upload Your Photos! 📸
-                  </DialogTitle>
-                </DialogHeader>
-                <PhotoUploadForm />
-              </DialogContent>
-            </Dialog>
-          </div>
-          
-          {/* Achievement celebration */}
-          <div className="mt-8 p-6 bg-white/10 backdrop-blur-sm rounded-2xl animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <div className="flex justify-center items-center space-x-4 text-white">
-              <Award className="h-8 w-8 animate-pulse" />
-              <span className="text-lg font-semibold">Every story matters! Every achievement counts!</span>
-              <Award className="h-8 w-8 animate-pulse" />
+      {/* Program Information */}
+      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Heart className="h-12 w-12 mx-auto mb-6 text-purple-600" />
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Join Our Kids Corner Family
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Kids Corner operates Monday through Saturday at PEFA NYAGORO Church. 
+              All children in the community are welcome to participate in our activities. 
+              We provide a safe, nurturing environment where children can learn, play, and grow together.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <Calendar className="h-8 w-8 mx-auto mb-4 text-purple-600" />
+                <h3 className="font-semibold text-gray-900 mb-2">Program Schedule</h3>
+                <p className="text-gray-600 text-sm">
+                  Monday - Saturday: Various activities from 2:30 PM - 5:00 PM<br />
+                  Sunday: Family activities after church service
+                </p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <MapPin className="h-8 w-8 mx-auto mb-4 text-pink-600" />
+                <h3 className="font-semibold text-gray-900 mb-2">Location</h3>
+                <p className="text-gray-600 text-sm">
+                  PEFA NYAGORO Church<br />
+                  Nyagoro Village, Siaya County<br />
+                  Safe, supervised environment
+                </p>
+              </div>
             </div>
           </div>
         </div>

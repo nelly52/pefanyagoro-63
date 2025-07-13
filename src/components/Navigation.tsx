@@ -28,8 +28,8 @@ const Navigation = () => {
       ]
     },
     { name: 'Partnership', path: '/partnership' },
-    { name: 'Donate Now', path: '/donate-now' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Get Involved', path: '/get-involved' },
+    { name: 'Donate Now', path: '/donate-now', special: true },
   ];
 
   const isActive = (path: string) => {
@@ -69,8 +69,8 @@ const Navigation = () => {
                           className={cn(
                             "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent",
                             isActive(item.path) || isDropdownActive(item.dropdown)
-                              ? "text-blue-600 bg-blue-50"
-                              : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                              ? "text-teal-600 bg-teal-50"
+                              : "text-gray-700 hover:text-teal-600 hover:bg-teal-50"
                           )}
                         >
                           {item.name}
@@ -81,8 +81,8 @@ const Navigation = () => {
                             className={cn(
                               "block px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 mb-1",
                               isActive(item.path)
-                                ? "text-blue-600 bg-blue-50"
-                                : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                                ? "text-teal-600 bg-teal-50"
+                                : "text-gray-700 hover:text-teal-600 hover:bg-teal-50"
                             )}
                           >
                             All {item.name}
@@ -95,8 +95,8 @@ const Navigation = () => {
                                   className={cn(
                                     "block px-3 py-2 rounded-md text-sm transition-colors duration-200",
                                     isActive(dropdownItem.path)
-                                      ? "text-blue-600 bg-blue-50 font-medium"
-                                      : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                                      ? "text-teal-600 bg-teal-50 font-medium"
+                                      : "text-gray-600 hover:text-teal-600 hover:bg-teal-50"
                                   )}
                                 >
                                   {dropdownItem.name}
@@ -111,9 +111,11 @@ const Navigation = () => {
                         to={item.path}
                         className={cn(
                           "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200",
-                          isActive(item.path)
-                            ? "text-blue-600 bg-blue-50"
-                            : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                          item.special 
+                            ? "bg-green-600 text-white hover:bg-green-700"
+                            : isActive(item.path)
+                              ? "text-teal-600 bg-teal-50"
+                              : "text-gray-700 hover:text-teal-600 hover:bg-teal-50"
                         )}
                       >
                         {item.name}
@@ -129,7 +131,7 @@ const Navigation = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="text-gray-700 hover:text-teal-600 focus:outline-none"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -147,9 +149,11 @@ const Navigation = () => {
                     onClick={() => setIsOpen(false)}
                     className={cn(
                       "block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200",
-                      isActive(item.path)
-                        ? "text-blue-600 bg-blue-50"
-                        : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                      item.special
+                        ? "bg-green-600 text-white hover:bg-green-700"
+                        : isActive(item.path)
+                          ? "text-teal-600 bg-teal-50"
+                          : "text-gray-700 hover:text-teal-600 hover:bg-teal-50"
                     )}
                   >
                     {item.name}
@@ -164,8 +168,8 @@ const Navigation = () => {
                           className={cn(
                             "block px-3 py-2 rounded-md text-sm transition-colors duration-200",
                             isActive(dropdownItem.path)
-                              ? "text-blue-600 bg-blue-50 font-medium"
-                              : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                              ? "text-teal-600 bg-teal-50 font-medium"
+                              : "text-gray-600 hover:text-teal-600 hover:bg-teal-50"
                           )}
                         >
                           {dropdownItem.name}
