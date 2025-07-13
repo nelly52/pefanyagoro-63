@@ -71,6 +71,54 @@ export type Database = {
         }
         Relationships: []
       }
+      mpesa_transactions: {
+        Row: {
+          amount: number
+          checkout_request_id: string | null
+          created_at: string | null
+          description: string | null
+          id: string
+          merchant_request_id: string | null
+          phone_number: string
+          reference: string
+          result_code: string | null
+          result_desc: string | null
+          status: string | null
+          transaction_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          amount: number
+          checkout_request_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          merchant_request_id?: string | null
+          phone_number: string
+          reference: string
+          result_code?: string | null
+          result_desc?: string | null
+          status?: string | null
+          transaction_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number
+          checkout_request_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          merchant_request_id?: string | null
+          phone_number?: string
+          reference?: string
+          result_code?: string | null
+          result_desc?: string | null
+          status?: string | null
+          transaction_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       photo_uploads: {
         Row: {
           child_name: string
