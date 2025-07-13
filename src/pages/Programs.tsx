@@ -2,7 +2,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { PaymentButton } from '@/components/PaymentButton';
 import {
   BookOpenCheck,
   BrainCircuit,
@@ -228,7 +227,7 @@ const Programs = () => {
                   </div>
 
                   {/* Program Outcomes */}
-                  <div className="mb-6">
+                  <div className="mb-4">
                     <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                       <Target className="h-4 w-4 mr-2 text-green-600" />
                       Program Outcomes:
@@ -242,14 +241,6 @@ const Programs = () => {
                       ))}
                     </div>
                   </div>
-
-                  {/* Support Button */}
-                  <PaymentButton 
-                    amount={75}
-                    description={`Support ${program.title} program`}
-                    variant="outline"
-                    className="w-full"
-                  />
                 </CardContent>
               </Card>
             ))}
@@ -261,22 +252,24 @@ const Programs = () => {
       <section className="py-16 bg-gradient-to-r from-green-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Partner With Us to Create Change
+            Want to Support Our Programs?
           </h2>
           <p className="text-xl text-green-100 mb-8">
             Your support enables us to expand these life-changing programs and reach more families and communities in need. Together, we can build a brighter future for everyone.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <PaymentButton 
-              amount={100}
-              description="Monthly program support"
-              className="bg-white text-green-600 hover:bg-gray-100"
-            />
-            <PaymentButton 
-              amount={250}
-              description="Support multiple programs"
-              className="bg-white text-green-600 hover:bg-gray-100"
-            />
+            <a 
+              href="/donate-now"
+              className="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-md font-medium transition-colors duration-200"
+            >
+              Donate Now
+            </a>
+            <a 
+              href="/partnership"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-md font-medium transition-colors duration-200"
+            >
+              Become a Partner
+            </a>
           </div>
         </div>
       </section>

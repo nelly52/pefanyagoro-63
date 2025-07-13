@@ -1,8 +1,16 @@
 
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,15 +19,25 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Programs', path: '/programs' },
+    { 
+      name: 'Programs', 
+      path: '/programs',
+      dropdown: [
+        { name: 'Kids Corner', path: '/kids-corner' },
+        { name: 'Caregiver Empowerment', path: '/caregiver-empowerment' },
+      ]
+    },
     { name: 'Partnership', path: '/partnership' },
-    { name: 'Kids Corner', path: '/kids-corner' },
-    { name: 'Caregiver Empowerment', path: '/caregiver-empowerment' },
+    { name: 'Donate Now', path: '/donate-now' },
     { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const isDropdownActive = (dropdown: any[]) => {
+    return dropdown.some(item => location.pathname === item.path);
   };
 
   return (
@@ -40,21 +58,71 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200",
-                  isActive(item.path)
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
+          <div className="hidden lg:flex">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-2">
+                {navItems.map((item) => (
+                  <NavigationMenuItem key={item.name}>
+                    {item.dropdown ? (
+                      <>
+                        <NavigationMenuTrigger 
+                          className={cn(
+                            "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent",
+                            isActive(item.path) || isDropdownActive(item.dropdown)
+                              ? "text-blue-600 bg-blue-50"
+                              : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                          )}
+                        >
+                          {item.name}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent className="bg-white border shadow-lg rounded-md p-2 min-w-[200px]">
+                          <Link
+                            to={item.path}
+                            className={cn(
+                              "block px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 mb-1",
+                              isActive(item.path)
+                                ? "text-blue-600 bg-blue-50"
+                                : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                            )}
+                          >
+                            All {item.name}
+                          </Link>
+                          <div className="border-t pt-1">
+                            {item.dropdown.map((dropdownItem) => (
+                              <NavigationMenuLink key={dropdownItem.name} asChild>
+                                <Link
+                                  to={dropdownItem.path}
+                                  className={cn(
+                                    "block px-3 py-2 rounded-md text-sm transition-colors duration-200",
+                                    isActive(dropdownItem.path)
+                                      ? "text-blue-600 bg-blue-50 font-medium"
+                                      : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                                  )}
+                                >
+                                  {dropdownItem.name}
+                                </Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </div>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className={cn(
+                          "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200",
+                          isActive(item.path)
+                            ? "text-blue-600 bg-blue-50"
+                            : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                        )}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           {/* Mobile menu button */}
@@ -73,19 +141,39 @@ const Navigation = () => {
           <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200",
-                    isActive(item.path)
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                <div key={item.name}>
+                  <Link
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200",
+                      isActive(item.path)
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                  {item.dropdown && (
+                    <div className="ml-4 space-y-1">
+                      {item.dropdown.map((dropdownItem) => (
+                        <Link
+                          key={dropdownItem.name}
+                          to={dropdownItem.path}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            "block px-3 py-2 rounded-md text-sm transition-colors duration-200",
+                            isActive(dropdownItem.path)
+                              ? "text-blue-600 bg-blue-50 font-medium"
+                              : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                          )}
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      ))}
+                    </div>
                   )}
-                >
-                  {item.name}
-                </Link>
+                </div>
               ))}
             </div>
           </div>
